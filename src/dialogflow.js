@@ -26,7 +26,13 @@ async function sendMessage(chatId, msg) {
 
   const result = response[0].queryResult;
 
-  console.log(JSON.stringify(result, null, 2))
+  const data = {
+    text: result.fulfillmentText,
+    intent: result.intent.displayName,
+    fields: result.parameters.fields,
+  };
+
+  return data;
 }
 
-sendMessage('1322731419', 'oi');
+module.exports.sendMessage = sendMessage;

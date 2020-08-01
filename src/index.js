@@ -1,14 +1,24 @@
 const TelegramBoot = require('node-telegram-bot-api');
 
-const token = '1322731419:AAEKMIGUiITurPG7wm5qrXS5HdFAxA6XLBo';
+const dialogflow = require('./dialogflow');
+const youtube = require('./youtube');
+
+const token = '';
 
 const boot = new TelegramBoot(token, {
   polling: true,
 });
 
-boot.on('message', (msg) => {
+boot.on('message', async (msg) => {
   const chatId = msg.chat.id;
-  console.log(msg.text);
+ 
+  const dfResponse = await dialogflow.sendMessage(chatId.toString(), msg.text);
 
-  boot.sendMessage(chatId, 'Obrigado por sua mensagem');
+  let responseText = dfResponse.text;
+
+  if (dfResponse.intent === 'treino específico') {
+    responseText = youtube.searchVideoURL(responseText, dfResponse.fields.corpo.stringValue);
+  }
+
+  boot.sendMessage(chatId, responseText);
 });
