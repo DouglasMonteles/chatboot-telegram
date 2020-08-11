@@ -36,25 +36,24 @@
   <li>
     Instalar o <a href="https://www.npmjs.com/">npm</a> ou <a href="https://classic.yarnpkg.com/pt-BR/docs/install/#debian-stable">yarn</a> em sua máquina;
   </li>
-  
-  <p style="background-color: red; color="#fff">
-    OBS: É necessário informar o Token do Chatbot do telegram, do YouTube e do DialogFlow. 
-  </p>
 </ul>
 
 ### Instalação
 
-### Clone o repositório para sua máquina local
+### 1 - Clone o repositório para sua máquina local
 ```bash
   https://github.com/DouglasMonteles/chatboot-telegram.git
 ```
 
-### Entre no diretório
+### 2 - Entre no diretório
 ```
   cd chatboot-telegram
 ```
+<p styles="background: red; color: #fff">
+  OBS: É necessário informar o Token do Chatbot do telegram, do YouTube e do DialogFlow. 
+</p>
 
-### Execute o projeto 
+### 3 - Execute o projeto 
 ```
   npm start OU yarn start
 ```
